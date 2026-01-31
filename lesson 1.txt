@@ -1,0 +1,251 @@
+############################################################
+# PYTHON BASICS – COMPLETE CONSOLIDATED NOTEBOOK LESSON 1
+#  | With Examples, Comments & Solutions
+############################################################
+
+# ==========================================================
+# PART 1: INTERACTIVE SHELL & EXPRESSIONS
+# ==========================================================
+
+# Expressions are values Python can evaluate
+2 + 2          # evaluates to 4
+3 * 4          # evaluates to 12
+10 / 2         # evaluates to 5.0 (division always returns float)
+
+# Order of operations
+2 + 3 * 4      # 14 (multiplication first)
+(2 + 3) * 4    # 20 (parentheses override order)
+
+# Integer division and modulus
+7 // 2         # 3 (floor division)
+7 % 2          # 1 (remainder)
+
+# Exponentiation
+2 ** 3         # 8
+
+
+# ==========================================================
+# PART 2: DATA TYPES
+# ==========================================================
+
+type(10)        # int
+type(10.5)      # float
+type("10")      # str
+
+# Integers
+42
+-99
+
+# Floats
+3.14
+23 / 7          # 3.2857142857142856
+
+# Float precision nuance
+0.1 + 0.2       # 0.30000000000000004 (binary approximation)
+
+
+# ==========================================================
+# PART 3: STRINGS
+# ==========================================================
+
+"Hello"
+'Hello'
+
+# String concatenation
+"Hello" + "World"       # 'HelloWorld'
+
+# String replication
+"ha" * 3                # 'hahaha'
+
+# Invalid string operation (TypeError)
+# "age" + 5
+
+# Correct conversion
+"age " + str(5)         # 'age 5'
+
+
+# ==========================================================
+# PART 4: VARIABLES
+# ==========================================================
+
+# Variable assignment
+spam = 40
+spam             # 40
+
+# Using variables in expressions
+spam + 2          # 42
+
+# Reassignment
+spam = spam + 2
+spam              # 42
+
+# Variable type can change
+spam = "hello"
+spam              # 'hello'
+
+# Naming rules (valid)
+my_var = 10
+_myVar2 = 20
+
+# Naming rules (invalid – commented to avoid errors)
+# 2spam = 10
+# my-var = 5
+# my var = 5
+
+
+# ==========================================================
+# PART 5: PRINT FUNCTION
+# ==========================================================
+
+print("Hello world")
+print(42)
+print("Age:", 30)
+
+# print() returns None
+result = print("Testing")
+result            # None
+
+
+# ==========================================================
+# PART 6: INPUT FUNCTION
+# ==========================================================
+
+# input() ALWAYS returns a string
+# name = input()
+# print(name)
+
+# Numeric input must be converted
+# age = int(input())
+# print(age + 1)
+
+# Full input/output program
+# name = input("Enter your name: ")
+# age = int(input("Enter your age: "))
+# print("Hello", name)
+# print("Next year you will be", age + 1)
+
+
+# ==========================================================
+# PART 7: BUILT-IN FUNCTIONS
+# ==========================================================
+
+# len()
+len("hello")            # 5
+len("Hello world")      # 11
+len("")                 # 0
+
+# round()
+round(3.5)              # 4
+round(3.14159, 2)       # 3.14
+
+# abs()
+abs(-10)                # 10
+abs(-3.5)               # 3.5
+
+# Nested functions
+round(abs(-3.4567), 2)  # 3.46
+
+
+# ==========================================================
+# PART 8: ERRORS (EXAMPLES)
+# ==========================================================
+
+# SyntaxError
+# print("Hello)
+
+# NameError
+# eggs
+
+# TypeError
+# "age" + 5
+
+# ValueError
+# int("hello")
+
+
+# ==========================================================
+# PART 9: BINARY & STORAGE (REFERENCE)
+# ==========================================================
+
+# Decimal to Binary examples:
+# 1  -> 1
+# 2  -> 10
+# 3  -> 11
+# 4  -> 100
+# 5  -> 101
+# 6  -> 110
+# 8  -> 1000
+
+# Bits & Bytes
+# 1 bit  = 0 or 1
+# 1 byte = 8 bits
+# 1 KB   = 1024 bytes
+# 1 MB   = 1024 KB
+# 1 GB   = 1024 MB
+
+
+# ==========================================================
+# PART 10: PRACTICE QUESTIONS
+# ==========================================================
+
+# Q1: What is the output?
+# 2 + 3 * 6
+
+# Q2: What is the output?
+# "hi" * 4
+
+# Q3: Why does this fail?
+# age = input()
+# print(age + 1)
+
+# Q4: Fix this code
+# print("I am " + 5 + " years old")
+
+# Q5: Write a program to print next year's age
+
+# Q6: What is the type of (10 / 2)?
+
+# Q7: Convert decimal 8 to binary
+
+# Q8: What error is this?
+# len(100)
+
+
+# ==========================================================
+# PART 11: SOLUTIONS
+# ==========================================================
+
+# A1
+2 + 3 * 6          # 20
+
+# A2
+"hi" * 4           # 'hihihihi'
+
+# A3 (Explanation)
+# input() returns string; must convert to int
+
+# Corrected code
+# age = int(input())
+# print(age + 1)
+
+# A4 (Fixed)
+"I am " + str(5) + " years old"
+
+# A5 (Program)
+# name = input("Enter your name: ")
+# age = int(input("Enter your age: "))
+# print("Next year you will be", age + 1)
+
+# A6
+type(10 / 2)       # float
+
+# A7
+# Decimal 8 -> Binary 1000
+
+# A8
+# TypeError
+
+
+############################################################
+# END OF CONSOLIDATED PYTHON BASICS NOTEBOOK
+############################################################
