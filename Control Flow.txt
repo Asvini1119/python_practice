@@ -1,0 +1,98 @@
+==============================
+CHAPTER: FLOW CONTROL IN PYTHON
+==============================
+
+1. BOOLEAN VALUES
+-----------------
+Python has two Boolean values:
+True
+False
+
+Example:
+x = 5 > 3   # True
+y = 5 == 10 # False
+
+Explanation:
+> Comparison operators always return a Boolean value.
+
+--------------------------------------------------
+
+2. COMPARISON OPERATORS
+----------------------
+==  equal to
+!=  not equal to
+<   less than
+<=  less than or equal to
+>   greater than
+>=  greater than or equal to
+
+Example:
+print(10 == 10)   # True
+print(10 != 5)    # True
+print(3 >= 7)     # False
+
+--------------------------------------------------
+
+3. BOOLEAN OPERATORS
+-------------------
+and  → True if both sides are True
+or   → True if at least one side is True
+not  → Reverses the Boolean value
+
+Example:
+print(True and False)  # False
+print(True or False)   # True
+print(not True)        # False
+
+--------------------------------------------------
+
+4. IF STATEMENT
+---------------
+name = "Alice"
+
+if name == "Alice":
+    print("Hello, Alice!")
+
+Explanation:
+> The code inside the if block runs only when the condition is True.
+
+--------------------------------------------------
+
+5. IF–ELIF–ELSE STATEMENT
+------------------------
+age = 25
+
+if age < 12:
+    print("You are a child")
+elif age < 60:
+    print("You are an adult")
+else:
+    print("You are a senior")
+
+Explanation:
+> Only ONE block runs. Order matters.
+
+--------------------------------------------------
+
+6. PRACTICE QUESTIONS
+---------------------
+Q1. What does this print?
+
+x = 10
+if x > 5:
+    print("A")
+else:
+    print("B")
+
+Q2. Evaluate:
+(5 > 3) and (2 == 4)
+
+--------------------------------------------------
+
+7. ANSWERS
+----------
+A1. A
+Explanation: 10 > 5 is True
+
+A2. False
+Explanation: True and False → False
