@@ -1,0 +1,314 @@
+# Automate the Boring Stuff with Python (3rd Edition)
+
+## Debugging Chapter — Consolidated Examples & Exercises with Solutions
+
+---
+
+## 1. Core Example Programs from the Chapter
+
+---
+
+### Example 1 — Raising a Basic Exception
+
+```python
+raise Exception("This is an error message.")
+```
+
+**Purpose**
+
+* Immediately stops program execution
+* Signals that something unexpected happened
+
+---
+
+### Example 2 — Input Validation with raise
+
+```python
+def boxPrint(symbol, width, height):
+    if len(symbol) != 1:
+        raise Exception("Symbol must be a single character string.")
+    if width <= 2:
+        raise Exception("Width must be greater than 2.")
+    if height <= 2:
+        raise Exception("Height must be greater than 2.")
+
+    print(symbol * width)
+    for i in range(height - 2):
+        print(symbol + (" " * (width - 2)) + symbol)
+    print(symbol * width)
+
+boxPrint("*", 10, 5)
+```
+
+**Key concepts**
+
+* Defensive programming
+* Prevents invalid inputs
+* Meaningful error messages
+
+---
+
+### Example 3 — Capturing Traceback to a File
+
+```python
+import traceback
+
+try:
+    1 / 0
+except Exception:
+    tb = traceback.format_exc()
+    with open("error_log.txt", "w", encoding="utf-8") as f:
+        f.write(tb)
+    print("Saved traceback to error_log.txt")
+```
+
+**Key concepts**
+
+* Captures full error details
+* Useful for debugging crashes later
+
+---
+
+### Example 4 — Assertions for Sanity Checks
+
+```python
+def switchLights(light):
+    assert light in ("red", "yellow", "green"), "Invalid traffic light color"
+    print("Switching light...")
+
+switchLights("red")
+```
+
+**Key concepts**
+
+* Verifies assumptions
+* Catches programmer mistakes early
+
+---
+
+### Example 5 — Basic Logging Setup
+
+```python
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(levelname)s: %(message)s")
+
+logging.debug("Start of program")
+```
+
+---
+
+### Example 6 — Logging Inside a Function
+
+```python
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(levelname)s: %(message)s")
+
+def factorial(n):
+    logging.debug(f"Start factorial({n})")
+    total = 1
+    for i in range(1, n + 1):
+        total *= i
+        logging.debug(f"i={i}, total={total}")
+    logging.debug(f"End factorial({n})")
+    return total
+
+print(factorial(5))
+```
+
+---
+
+### Example 7 — Disabling Logging
+
+```python
+import logging
+
+logging.disable(logging.CRITICAL)
+```
+
+Stops all logging output.
+
+---
+
+## 2. Practice Exercises with Solutions
+
+---
+
+### Exercise 1 — Raise an Error for Invalid Age
+
+**Problem:** Raise an error if age is negative.
+
+```python
+def checkAge(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative.")
+    return age
+
+print(checkAge(10))
+```
+
+---
+
+### Exercise 2 — Catch and Log an Exception
+
+```python
+import traceback
+
+def risky():
+    return int("abc")
+
+try:
+    risky()
+except Exception:
+    with open("error_log.txt", "w") as f:
+        f.write(traceback.format_exc())
+```
+
+---
+
+### Exercise 3 — Assertion Check
+
+```python
+def divide(a, b):
+    assert b != 0, "Cannot divide by zero"
+    return a / b
+
+print(divide(10, 2))
+```
+
+---
+
+### Exercise 4 — Add Debug Logging
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+def add(a, b):
+    logging.debug(f"Adding {a} and {b}")
+    return a + b
+
+print(add(3, 5))
+```
+
+---
+
+### Exercise 5 — Input Validation Loop
+
+```python
+while True:
+    try:
+        n = int(input("Enter an integer: "))
+        break
+    except ValueError:
+        print("Invalid input. Try again.")
+
+print("You entered:", n)
+```
+
+---
+
+### Exercise 6 — Fix a Logic Bug
+
+**Buggy code**
+
+```python
+def sum_to(n):
+    total = 0
+    for i in range(1, n):
+        total += i
+    return total
+```
+
+**Solution**
+
+```python
+def sum_to(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+```
+
+---
+
+### Exercise 7 — Warning Logging
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+def process(n):
+    if n > 1_000_000:
+        logging.warning("Large number detected")
+    return n * 2
+
+print(process(10))
+print(process(2_000_000))
+```
+
+---
+
+### Exercise 8 — Defensive Function Design
+
+```python
+def safeDivide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
+
+print(safeDivide(10, 2))
+```
+
+---
+
+### Exercise 9 — Assertion for List Safety
+
+```python
+def average(nums):
+    assert len(nums) > 0, "List cannot be empty"
+    return sum(nums) / len(nums)
+
+print(average([2, 4, 6]))
+```
+
+---
+
+### Exercise 10 — Debug Mode Toggle
+
+```python
+import logging
+
+def setupLogging(debug=False):
+    level = logging.DEBUG if debug else logging.WARNING
+    logging.basicConfig(level=level)
+
+setupLogging(debug=True)
+
+def multiply(a, b):
+    logging.debug(f"Multiplying {a} and {b}")
+    return a * b
+
+print(multiply(3, 4))
+```
+
+---
+
+## 3. Key Takeaways Summary
+
+* Debugging identifies syntax, runtime, and logic errors
+* Exceptions communicate failures clearly
+* Tracebacks show where errors occur
+* Assertions verify internal assumptions
+* Logging tracks program behavior
+* Defensive programming prevents crashes
+* Systematic debugging saves time
+
+---
+
+## End of Consolidated Debugging Reference
+
+This document contains all major debugging examples and exercises in one structured reference.
