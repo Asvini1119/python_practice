@@ -1,0 +1,397 @@
+# Automate the Boring Stuff with Python (3rd Edition)
+
+## Chapter — Lists
+
+### Consolidated Examples & Exercises (Single Reference Document)
+
+---
+
+## Core Examples from the Chapter
+
+---
+
+### Example 1 — Creating and Accessing a List
+
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+
+print(spam[0])
+print(spam[1])
+print(spam[-1])
+```
+
+Demonstrates indexing and negative indexing.
+
+---
+
+### Example 2 — List Slicing
+
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+
+print(spam[1:3])
+print(spam[:2])
+print(spam[2:])
+print(spam[:])
+```
+
+Shows slicing and copying lists.
+
+---
+
+### Example 3 — Changing List Values
+
+```python
+spam = ['cat', 'bat', 'rat']
+spam[1] = 'dog'
+print(spam)
+```
+
+Lists are mutable.
+
+---
+
+### Example 4 — Concatenation and Replication
+
+```python
+print([1, 2, 3] + ['A', 'B'])
+print(['Hi'] * 3)
+```
+
+Combining and repeating lists.
+
+---
+
+### Example 5 — Removing Items
+
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+del spam[2]
+print(spam)
+
+spam.remove('cat')
+print(spam)
+```
+
+Using `del` and `remove()`.
+
+---
+
+### Example 6 — Membership Testing
+
+```python
+myPets = ['Zophie', 'Pooka', 'Fat-tail']
+
+print('Zophie' in myPets)
+print('Lion' not in myPets)
+```
+
+Checking list membership.
+
+---
+
+### Example 7 — Looping Through Lists
+
+```python
+supplies = ['pens', 'staplers', 'flamethrowers', 'binders']
+
+for item in supplies:
+    print(item)
+
+for i in range(len(supplies)):
+    print('Index', i, 'contains', supplies[i])
+```
+
+Iteration methods.
+
+---
+
+### Example 8 — Range to List Conversion
+
+```python
+numbers = list(range(1, 10, 2))
+print(numbers)
+```
+
+Using `range()` with lists.
+
+---
+
+### Example 9 — Multiple Assignment
+
+```python
+cat = ['fat', 'gray', 'loud']
+size, color, sound = cat
+print(size, color, sound)
+```
+
+Tuple unpacking.
+
+---
+
+### Example 10 — List Methods
+
+```python
+spam = ['cat', 'dog']
+spam.append('moose')
+spam.insert(1, 'chicken')
+print(spam)
+
+spam = ['cat', 'bat', 'rat', 'cat']
+spam.remove('cat')
+print(spam)
+```
+
+Adding and removing items.
+
+---
+
+### Example 11 — Sorting Lists
+
+```python
+numbers = [2, 5, 3.14, 1, -7]
+numbers.sort()
+print(numbers)
+
+words = ['Alice', 'ants', 'Bob', 'badgers']
+words.sort(key=str.lower)
+print(words)
+```
+
+Sorting behavior.
+
+---
+
+### Example 12 — My Pets Program
+
+```python
+myPets = ['Zophie', 'Pooka', 'Fat-tail']
+
+print('Enter a pet name:')
+name = input()
+
+if name not in myPets:
+    print('I do not have a pet named ' + name)
+else:
+    print(name + ' is my pet.')
+```
+
+Input and membership logic.
+
+---
+
+### Example 13 — Comma Code Program
+
+```python
+def comma_code(items):
+    if len(items) == 0:
+        return ''
+    if len(items) == 1:
+        return items[0]
+
+    result = ''
+    for i in range(len(items) - 1):
+        result += items[i] + ', '
+    result += 'and ' + items[-1]
+    return result
+
+spam = ['apples', 'bananas', 'tofu', 'cats']
+print(comma_code(spam))
+```
+
+Formatting lists as sentences.
+
+---
+
+### Example 14 — Character Picture Grid
+
+```python
+grid = [
+    ['.', '.', '.', '.', '.', '.'],
+    ['.', 'O', 'O', '.', '.', '.'],
+    ['O', 'O', 'O', 'O', '.', '.'],
+    ['O', 'O', 'O', 'O', 'O', '.'],
+    ['.', 'O', 'O', 'O', 'O', 'O'],
+    ['O', 'O', 'O', 'O', 'O', '.'],
+    ['O', 'O', 'O', 'O', '.', '.'],
+    ['.', 'O', 'O', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.']
+]
+
+for x in range(len(grid[0])):
+    for y in range(len(grid)):
+        print(grid[y][x], end='')
+    print()
+```
+
+Nested list traversal.
+
+---
+
+## Exercises with Solutions
+
+---
+
+### Exercise 1 — Access Elements
+
+```python
+spam = ['a', 'b', 'c', 'd']
+print(spam[0])
+print(spam[-1])
+print(spam[1:3])
+```
+
+---
+
+### Exercise 2 — Replace an Item
+
+```python
+spam = ['a', 'b', 'c', 'd']
+spam[2] = 'X'
+print(spam)
+```
+
+---
+
+### Exercise 3 — Build a List with append()
+
+```python
+squares = []
+for i in range(1, 6):
+    squares.append(i * i)
+print(squares)
+```
+
+---
+
+### Exercise 4 — Remove All Occurrences
+
+```python
+pets = ['cat', 'dog', 'cat', 'fish', 'cat']
+
+while 'cat' in pets:
+    pets.remove('cat')
+
+print(pets)
+```
+
+---
+
+### Exercise 5 — Count Items Manually
+
+```python
+items = ['a', 'b', 'a', 'c', 'a']
+count = 0
+
+for item in items:
+    if item == 'a':
+        count += 1
+
+print(count)
+```
+
+---
+
+### Exercise 6 — Find Maximum Value
+
+```python
+nums = [5, 2, 9, 1]
+max_val = nums[0]
+
+for n in nums:
+    if n > max_val:
+        max_val = n
+
+print(max_val)
+```
+
+---
+
+### Exercise 7 — Reverse a List
+
+```python
+nums = [1, 2, 3, 4]
+rev = []
+
+for i in range(len(nums) - 1, -1, -1):
+    rev.append(nums[i])
+
+print(rev)
+```
+
+---
+
+### Exercise 8 — Comma Code Function
+
+```python
+def comma_code(items):
+    if len(items) == 0:
+        return ''
+    if len(items) == 1:
+        return items[0]
+    return ', '.join(items[:-1]) + ', and ' + items[-1]
+
+print(comma_code(['apples', 'bananas', 'tofu', 'cats']))
+```
+
+---
+
+### Exercise 9 — Safe Index Search
+
+```python
+def safe_index(lst, value):
+    if value in lst:
+        return lst.index(value)
+    return -1
+
+print(safe_index(['a', 'b', 'c'], 'b'))
+print(safe_index(['a', 'b', 'c'], 'x'))
+```
+
+---
+
+### Exercise 10 — Case-Insensitive Sort
+
+```python
+names = ['Alice', 'ants', 'Bob', 'badgers']
+names.sort(key=str.lower)
+print(names)
+```
+
+---
+
+### Exercise 11 — Flatten Nested Lists
+
+```python
+nested = [[1, 2], [3, 4], [5]]
+flat = []
+
+for sub in nested:
+    for item in sub:
+        flat.append(item)
+
+print(flat)
+```
+
+---
+
+### Exercise 12 — Print Grid Rows
+
+```python
+grid = [
+    ['.', 'O', '.'],
+    ['O', 'O', 'O'],
+    ['.', 'O', '.']
+]
+
+for row in grid:
+    for ch in row:
+        print(ch, end='')
+    print()
+```
+
+---
+
+## End of Lists Chapter Consolidated Reference
+
+This document includes all major list examples and exercises in one structured study reference.
