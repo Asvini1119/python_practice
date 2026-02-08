@@ -1,0 +1,280 @@
+# Automate the Boring Stuff with Python (3rd Edition)
+
+## Chapter 3 — Functions
+
+### Consolidated Examples & Exercises (Single Reference Document)
+
+---
+
+## 1. Core Example Programs from the Chapter
+
+---
+
+### Example 1 — Basic Function Definition
+
+```python
+def hello():
+    print("Hello!")
+    print("Howdy!")
+    print("Howdy!!!")
+
+hello()
+hello()
+hello()
+```
+
+**Purpose**
+
+* Demonstrates function definition and repeated calls
+* Shows how functions prevent repetition
+
+---
+
+### Example 2 — Function with Parameters
+
+```python
+def hello(name):
+    print("Hello " + name)
+
+hello("Alice")
+hello("Bob")
+```
+
+**Key Concepts**
+
+* Parameters receive arguments
+* Functions personalize output
+
+---
+
+### Example 3 — Magic 8 Ball Program
+
+```python
+import random
+
+def getAnswer(answerNumber):
+    if answerNumber == 1:
+        return "It is certain."
+    elif answerNumber == 2:
+        return "It is decidedly so."
+    elif answerNumber == 3:
+        return "Yes."
+    elif answerNumber == 4:
+        return "Reply hazy try again."
+    else:
+        return "Ask again later."
+
+r = random.randint(1, 5)
+fortune = getAnswer(r)
+print(fortune)
+```
+
+**Key Concepts**
+
+* Return values
+* Random number usage
+* Function-based decision logic
+
+---
+
+### Example 4 — Local vs Global Scope
+
+```python
+def spam():
+    eggs = 99
+    print(eggs)
+
+spam()
+```
+
+```python
+eggs = 42
+
+def spam():
+    print(eggs)
+
+spam()
+print(eggs)
+```
+
+```python
+eggs = 42
+
+def spam():
+    global eggs
+    eggs = 99
+
+spam()
+print(eggs)
+```
+
+**Key Concepts**
+
+* Local variables exist only inside functions
+* Global variables can be accessed anywhere
+* `global` keyword allows modification
+
+---
+
+### Example 5 — Collatz Sequence Program
+
+```python
+def collatz(number):
+    if number % 2 == 0:
+        return number // 2
+    else:
+        return 3 * number + 1
+
+while True:
+    try:
+        n = int(input("Enter a number: "))
+        break
+    except ValueError:
+        print("Please enter a valid integer.")
+
+while n != 1:
+    n = collatz(n)
+    print(n)
+```
+
+**Key Concepts**
+
+* Mathematical logic inside functions
+* Loops with function calls
+* Exception handling
+
+---
+
+### Example 6 — Zigzag Animation Program
+
+```python
+import time
+import sys
+
+indent = 0
+indentIncreasing = True
+
+try:
+    while True:
+        print(" " * indent + "********")
+        time.sleep(0.1)
+
+        if indentIncreasing:
+            indent += 1
+            if indent == 20:
+                indentIncreasing = False
+        else:
+            indent -= 1
+            if indent == 0:
+                indentIncreasing = True
+
+except KeyboardInterrupt:
+    sys.exit()
+```
+
+**Key Concepts**
+
+* Loop-driven animation
+* Control variables
+* Graceful exit with exception handling
+
+---
+
+## 2. Practice Exercises with Solutions
+
+---
+
+### Exercise 1 — Repeat Message Function
+
+**Problem:** Print a message multiple times.
+
+```python
+def repeatMessage(message, times):
+    for i in range(times):
+        print(message)
+
+repeatMessage("Spam!", 5)
+```
+
+---
+
+### Exercise 2 — Maximum of Two Numbers
+
+```python
+def maximum(a, b):
+    if a > b:
+        return a
+    return b
+
+print(maximum(5, 9))
+```
+
+---
+
+### Exercise 3 — Even or Odd Checker
+
+```python
+def isEven(n):
+    return n % 2 == 0
+
+print(isEven(10))
+```
+
+---
+
+### Exercise 4 — Factorial Function
+
+```python
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+print(factorial(5))
+```
+
+---
+
+### Exercise 5 — Safe Division Function
+
+```python
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "Cannot divide by zero."
+
+print(divide(10, 0))
+```
+
+---
+
+### Exercise 6 — Spike Pattern Program
+
+```python
+def spike(height):
+    for i in range(1, height + 1):
+        print("*" * i)
+    for i in range(height - 1, 0, -1):
+        print("*" * i)
+
+spike(5)
+```
+
+---
+
+## 3. Key Takeaways Summary
+
+* Functions organize reusable logic
+* Parameters allow flexible input
+* `return` sends values back
+* Scope controls variable visibility
+* Exception handling improves reliability
+* Functions reduce repetition and improve clarity
+
+---
+
+## End of Consolidated Chapter 3 Reference
+
+This document includes all major chapter examples and practice-style exercises in one place for revision and reuse.
