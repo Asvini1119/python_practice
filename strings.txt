@@ -1,0 +1,441 @@
+# Chapter 8 — Strings and Text Editing
+
+## Consolidated Examples and Exercises
+
+---
+
+# PART 1 — CONSOLIDATED EXAMPLES
+
+## 1. Basic String Examples
+
+```python
+spam = 'Hello world!'
+spam = "That is Alice's cat."
+```
+
+---
+
+## 2. Escape Character Examples
+
+```python
+print("Hello there!\nHow are you?\nI'm doing fine.")
+```
+
+Escape characters:
+
+```python
+print('Say hi to Bob\'s mother.')
+print("This is a backslash: \\")
+```
+
+---
+
+## 3. Raw String Example
+
+```python
+print(r'The file is in C:\Users\Alice\Desktop')
+```
+
+---
+
+## 4. Multiline String Example
+
+```python
+print("""Dear Alice,
+
+Can you feed Eve's cat this weekend?
+
+Sincerely,
+Bob""")
+```
+
+Equivalent single-line version:
+
+```python
+print('Dear Alice,\n\nCan you feed Eve\'s cat this weekend?\n\nSincerely,\nBob')
+```
+
+---
+
+## 5. Indexing and Slicing Examples
+
+```python
+greeting = 'Hello world!'
+
+greeting[0]
+greeting[4]
+greeting[-1]
+greeting[0:5]
+greeting[7:]
+greeting[:5]
+```
+
+Capturing a slice:
+
+```python
+greeting_slice = greeting[0:5]
+```
+
+---
+
+## 6. in / not in Operator Examples
+
+```python
+'Hello' in 'Hello world'
+'Hello' in 'Hello'
+'HELLO' in 'Hello world'
+'' in 'spam'
+'cats' not in 'cats and dogs'
+```
+
+---
+
+## 7. String Concatenation Example
+
+```python
+name = 'Al'
+age = 4000
+'My name is ' + name + '. I am ' + str(age) + ' years old.'
+```
+
+---
+
+## 8. F-String Examples
+
+```python
+name = 'Al'
+age = 4000
+
+f'My name is {name}. I am {age} years old.'
+f'In ten years I will be {age + 10}.'
+```
+
+Curly brace example:
+
+```python
+name = 'Zophie'
+f'{{name}}'
+```
+
+---
+
+## 9. Older Formatting Methods
+
+### % formatting
+
+```python
+'My name is %s. I am %s years old.' % (name, age)
+```
+
+### format()
+
+```python
+'My name is {}. I am {} years old.'.format(name, age)
+'{1} years ago, {0} was born.'.format(name, age)
+```
+
+---
+
+## 10. Changing Case Examples
+
+```python
+spam = 'Hello, world!'
+spam.upper()
+spam.lower()
+```
+
+Case-insensitive comparison:
+
+```python
+print('How are you?')
+feeling = input()
+
+if feeling.lower() == 'great':
+    print('I feel great too.')
+else:
+    print('I hope the rest of your day is good.')
+```
+
+---
+
+## 11. Checking String Characteristics
+
+```python
+'hello'.isalpha()
+'hello123'.isalnum()
+'123'.isdecimal()
+'   '.isspace()
+'This Is Title Case'.istitle()
+```
+
+Validation program:
+
+```python
+while True:
+    print('Enter your age:')
+    age = input()
+    if age.isdecimal():
+        break
+    print('Please enter a number.')
+
+while True:
+    print('Select a new password (letters and numbers only):')
+    password = input()
+    if password.isalnum():
+        break
+    print('Passwords can only have letters and numbers.')
+```
+
+---
+
+## 12. startswith / endswith Examples
+
+```python
+'Hello world!'.startswith('Hello')
+'Hello world!'.endswith('world!')
+```
+
+---
+
+## 13. join() Examples
+
+```python
+', '.join(['cats', 'rats', 'bats'])
+' '.join(['My', 'name', 'is', 'Simon'])
+'ABC'.join(['My', 'name', 'is', 'Simon'])
+```
+
+---
+
+## 14. split() Examples
+
+```python
+'My name is Simon'.split()
+'ABCABCABC'.split('ABC')
+```
+
+Multiline split:
+
+```python
+spam = """Dear Alice,
+There is a milk bottle in the fridge.
+Please do not drink it.
+
+Sincerely,
+Bob"""
+
+spam.split('\n')
+```
+
+---
+
+## 15. Text Justification Examples
+
+```python
+'Hello'.rjust(10)
+'Hello'.ljust(10)
+'Hello'.center(10)
+'Hello'.center(10, '=')
+```
+
+---
+
+## 16. Removing Whitespace Examples
+
+```python
+spam = '   Hello, world!   '
+
+spam.strip()
+spam.lstrip()
+spam.rstrip()
+```
+
+Removing specific characters:
+
+```python
+spam = 'SpamSpamBaconSpamEggsSpamSpam'
+spam.strip('ampS')
+```
+
+---
+
+## 17. ord() and chr() Examples
+
+```python
+ord('A')
+ord('4')
+ord('!')
+chr(65)
+```
+
+Math with characters:
+
+```python
+ord('B')
+ord('A') < ord('B')
+chr(ord('A') + 1)
+```
+
+---
+
+## 18. Clipboard Examples (pyperclip)
+
+```python
+import pyperclip
+
+pyperclip.copy('Hello world!')
+pyperclip.paste()
+```
+
+Alternating case program:
+
+```python
+import pyperclip
+
+text = pyperclip.paste()
+
+alt_text = ''
+make_uppercase = True
+
+for character in text:
+    if make_uppercase:
+        alt_text += character.upper()
+    else:
+        alt_text += character.lower()
+    make_uppercase = not make_uppercase
+
+pyperclip.copy(alt_text)
+```
+
+---
+
+## 19. Project — Add Bullets to Wiki Markup
+
+```python
+import pyperclip
+
+text = pyperclip.paste()
+lines = text.split('\n')
+
+for i in range(len(lines)):
+    lines[i] = '* ' + lines[i]
+
+text = '\n'.join(lines)
+pyperclip.copy(text)
+```
+
+---
+
+## 20. Pig Latin Program
+
+```python
+print('Enter the English message to translate into pig latin:')
+message = input()
+
+VOWELS = ('a', 'e', 'i', 'o', 'u', 'y')
+pigLatin = []
+
+for word in message.split():
+
+    prefixNonLetters = ''
+    while len(word) > 0 and not word[0].isalpha():
+        prefixNonLetters += word[0]
+        word = word[1:]
+
+    suffixNonLetters = ''
+    while len(word) > 0 and not word[-1].isalpha():
+        suffixNonLetters = word[-1] + suffixNonLetters
+        word = word[:-1]
+
+    if len(word) == 0:
+        pigLatin.append(prefixNonLetters + suffixNonLetters)
+        continue
+
+    wasUpper = word.isupper()
+    wasTitle = word.istitle()
+    word = word.lower()
+
+    prefixConsonants = ''
+    while len(word) > 0 and word[0] not in VOWELS:
+        prefixConsonants += word[0]
+        word = word[1:]
+
+    if prefixConsonants != '':
+        word += prefixConsonants + 'ay'
+    else:
+        word += 'yay'
+
+    if wasUpper:
+        word = word.upper()
+    if wasTitle:
+        word = word.title()
+
+    pigLatin.append(prefixNonLetters + word + suffixNonLetters)
+
+print(' '.join(pigLatin))
+```
+
+---
+
+# PART 2 — CONSOLIDATED EXERCISES
+
+## Practice Questions
+
+1. What are escape characters?
+2. What do `\n` and `\t` represent?
+3. How do you put a backslash in a string?
+4. Why isn’t `'Howl's Moving Castle'` valid?
+5. How can you write multiline text without `\n`?
+6. Evaluate:
+
+```
+'Hello, world!'[1]
+'Hello, world!'[0:5]
+'Hello, world!'[:5]
+'Hello, world!'[3:]
+```
+
+7. Evaluate:
+
+```
+'Hello'.upper()
+'Hello'.upper().isupper()
+'Hello'.upper().lower()
+```
+
+8. Evaluate:
+
+```
+'Remember, remember the fifth of November'.split()
+'-'.join(['There', 'can', 'be', 'only', 'one'])
+```
+
+9. Which methods justify text?
+10. How do you trim whitespace?
+
+---
+
+## Practice Program — Table Printer
+
+Write a function `printTable()` that prints:
+
+```
+  apples Alice dogs
+ oranges   Bob cats
+cherries Carol moose
+  banana David goose
+```
+
+From:
+
+```python
+tableData = [
+    ['apples', 'oranges', 'cherries', 'banana'],
+    ['Alice', 'Bob', 'Carol', 'David'],
+    ['dogs', 'cats', 'moose', 'goose']
+]
+```
+
+---
+
+# END OF DOCUMENT
