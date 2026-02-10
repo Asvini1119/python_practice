@@ -1,0 +1,313 @@
+# Chapter 7 — Dictionaries and Structuring Data
+
+## Complete Consolidated Examples, Exercises, and Solutions
+
+---
+
+# Part 1 — Dictionary Basics
+
+## Example 1: Creating a Dictionary
+
+```
+my_cat = {'size': 'fat', 'color': 'gray', 'age': 17}
+```
+
+Accessing values:
+
+```
+print(my_cat['size'])
+print('My cat has ' + my_cat['color'] + ' fur.')
+```
+
+---
+
+## Example 2: Keys vs Indexes
+
+```
+spam = {12345: 'Luggage Combination', 42: 'The Answer'}
+
+print(spam[12345])
+print(spam[42])
+```
+
+Trying to access a missing key:
+
+```
+print(spam[0])
+```
+
+Output:
+
+```
+KeyError: 0
+```
+
+---
+
+# Part 2 — Comparing Dictionaries and Lists
+
+## Example 3: Lists (order matters)
+
+```
+spam = ['cats', 'dogs', 'moose']
+bacon = ['dogs', 'moose', 'cats']
+print(spam == bacon)
+```
+
+Output:
+
+```
+False
+```
+
+---
+
+## Example 4: Dictionaries (order does not matter)
+
+```
+eggs = {'name': 'Zophie', 'species': 'cat', 'age': '8'}
+ham = {'species': 'cat', 'age': '8', 'name': 'Zophie'}
+print(eggs == ham)
+```
+
+Output:
+
+```
+True
+```
+
+---
+
+# Part 3 — Birthday Dictionary Program
+
+```
+birthdays = {'Alice': 'Apr 1', 'Bob': 'Dec 12', 'Carol': 'Mar 4'}
+
+while True:
+    print('Enter a name: (blank to quit)')
+    name = input()
+    if name == '':
+        break
+
+    if name in birthdays:
+        print(birthdays[name] + ' is the birthday of ' + name)
+    else:
+        print('I do not have birthday information for ' + name)
+        print('What is their birthday?')
+        bday = input()
+        birthdays[name] = bday
+        print('Birthday database updated.')
+```
+
+---
+
+# Part 4 — Dictionary Methods
+
+## Example 5: keys(), values(), items()
+
+```
+spam = {'color': 'red', 'age': 42}
+
+for k in spam.keys():
+    print(k)
+
+for v in spam.values():
+    print(v)
+
+for k, v in spam.items():
+    print('Key:', k, 'Value:', v)
+```
+
+---
+
+## Example 6: Checking Existence
+
+```
+print('color' in spam.keys())
+print('red' in spam.values())
+```
+
+---
+
+# Part 5 — get() Method
+
+```
+picnic_items = {'apples': 5, 'cups': 2}
+
+print('I am bringing ' +
+      str(picnic_items.get('cups', 0)) + ' cups.')
+
+print('I am bringing ' +
+      str(picnic_items.get('eggs', 0)) + ' eggs.')
+```
+
+---
+
+# Part 6 — setdefault() Method
+
+```
+spam = {'name': 'Pooka', 'age': 5}
+
+spam.setdefault('color', 'black')
+spam.setdefault('color', 'white')
+
+print(spam)
+```
+
+---
+
+# Part 7 — Character Count Program
+
+```
+message = 'It was a bright cold day in April.'
+count = {}
+
+for character in message:
+    count.setdefault(character, 0)
+    count[character] += 1
+
+print(count)
+```
+
+---
+
+# Part 8 — Chessboard Data Structure Project
+
+## Starting Chessboard
+
+```
+STARTING_PIECES = {
+    'a8':'bR','b8':'bN','c8':'bB','d8':'bQ','e8':'bK','f8':'bB','g8':'bN','h8':'bR',
+    'a7':'bP','b7':'bP','c7':'bP','d7':'bP','e7':'bP','f7':'bP','g7':'bP','h7':'bP',
+    'a2':'wP','b2':'wP','c2':'wP','d2':'wP','e2':'wP','f2':'wP','g2':'wP','h2':'wP',
+    'a1':'wR','b1':'wN','c1':'wB','d1':'wQ','e1':'wK','f1':'wB','g1':'wN','h1':'wR'
+}
+```
+
+---
+
+## Printing the Chessboard
+
+```
+def print_chessboard(board):
+    for y in '87654321':
+        row = ''
+        for x in 'abcdefgh':
+            square = x + y
+            if square in board:
+                row += board[square] + ' '
+            else:
+                row += '.. '
+        print(row)
+```
+
+---
+
+## Interactive Chessboard Commands
+
+```
+import copy
+
+main_board = copy.copy(STARTING_PIECES)
+
+while True:
+    print_chessboard(main_board)
+    response = input('> ').split()
+
+    if response[0] == 'quit':
+        break
+
+    elif response[0] == 'move':
+        main_board[response[2]] = main_board[response[1]]
+        del main_board[response[1]]
+
+    elif response[0] == 'remove':
+        del main_board[response[1]]
+
+    elif response[0] == 'set':
+        main_board[response[1]] = response[2]
+
+    elif response[0] == 'reset':
+        main_board = copy.copy(STARTING_PIECES)
+
+    elif response[0] == 'clear':
+        main_board = {}
+
+    elif response[0] == 'fill':
+        for y in '87654321':
+            for x in 'abcdefgh':
+                main_board[x+y] = response[1]
+```
+
+---
+
+# Part 9 — Nested Dictionaries Example
+
+```
+all_guests = {
+    'Alice': {'apples': 5, 'pretzels': 12},
+    'Bob': {'ham sandwiches': 3, 'apples': 2},
+    'Carol': {'cups': 3, 'apple pies': 1}
+}
+
+def total_brought(guests, item):
+    num_brought = 0
+    for k, v in guests.items():
+        num_brought += v.get(item, 0)
+    return num_brought
+
+print('Number of things being brought:')
+print('- Apples:', total_brought(all_guests, 'apples'))
+print('- Cups:', total_brought(all_guests, 'cups'))
+print('- Cakes:', total_brought(all_guests, 'cakes'))
+print('- Ham Sandwiches:', total_brought(all_guests, 'ham sandwiches'))
+print('- Apple Pies:', total_brought(all_guests, 'apple pies'))
+```
+
+---
+
+# Practice Questions
+
+1. What does the code for an empty dictionary look like?
+2. What does a dictionary value with key `'foo'` and value `42` look like?
+3. What is the main difference between a dictionary and a list?
+4. What happens if you try to access `spam['foo']` if `spam` is `{'bar': 100}`?
+
+---
+
+# Solutions
+
+## Solution 1
+
+```
+{}
+```
+
+---
+
+## Solution 2
+
+```
+{'foo': 42}
+```
+
+---
+
+## Solution 3
+
+Lists are ordered collections accessed by numeric indexes.
+Dictionaries are unordered collections accessed by keys.
+
+---
+
+## Solution 4
+
+It raises:
+
+```
+KeyError: 'foo'
+```
+
+---
+
+**End of Consolidated Chapter Document**
